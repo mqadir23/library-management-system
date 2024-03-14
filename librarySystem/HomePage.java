@@ -45,11 +45,11 @@ public class HomePage extends javax.swing.JFrame {
       
       try{
           Connection con=DBConnection.getConnection();
-          String sql="select book_name,count(*) as count from books_details order by book_id";
+          String sql="select book_name,quantity from books_details order by book_id";
           Statement st=con.createStatement();
           ResultSet rs=st.executeQuery(sql);
           while(rs.next()){
-              barDataset.setValue(rs.getString("book_name"),new Double(rs.getDouble("count")));
+              barDataset.setValue(rs.getString("book_name"),new Double(rs.getDouble("quantity")));
           }
       }catch(Exception e){
           e.printStackTrace();
